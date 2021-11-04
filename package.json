@@ -1,6 +1,6 @@
 {
   "name": "back-office",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -20,6 +20,7 @@
     "@angular/platform-browser": "~13.0.0",
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
+    "chart.js": "^3.6.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "rxjs": "~7.4.0",
@@ -31,6 +32,7 @@
     "@angular-devkit/build-angular": "~13.0.1",
     "@angular/cli": "~13.0.1",
     "@angular/compiler-cli": "~13.0.0",
+    "@types/chart.js": "^2.9.34",
     "@types/jasmine": "~3.10.0",
     "@types/lodash": "^4.14.176",
     "@types/moment": "^2.13.0",
