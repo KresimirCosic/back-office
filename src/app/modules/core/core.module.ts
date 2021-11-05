@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
+import { AuthenticationModule } from '../authentication/authentication.module';
+import { ProductsModule } from '../products/products.module';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule],
+  imports: [AuthenticationModule, ProductsModule],
 })
 export class CoreModule {}
