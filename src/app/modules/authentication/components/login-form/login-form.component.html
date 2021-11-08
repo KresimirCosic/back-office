@@ -1,0 +1,5 @@
+<ng-container *ngIf="employee$ | async as employee">
+  <button *ngIf="!employee.username" (click)="handleLogin()">Login</button>
+  <button *ngIf="employee.username" (click)="handleLogout()">Logout</button>
+  <h1 *ngIf="employee.username">Hello {{ employee.username }}</h1>
+</ng-container>

@@ -1,3 +1,6 @@
+import { ICategory } from './Category.model';
+import { IEmployee } from './Employee.model';
+
 export interface IStore {
   id: string;
   data: IStoreData;
@@ -5,6 +8,6 @@ export interface IStore {
 
 interface IStoreData {
   name: string;
-  category: string;
-  employees: string[];
+  category: ICategory;
+  employees: IEmployee[];
 }
