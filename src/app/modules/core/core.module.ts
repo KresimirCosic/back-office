@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 
-import { AuthenticationModule } from '../authentication/authentication.module';
-import { ProductsModule } from '../products/products.module';
+import { CoreRoutingModule } from './core-routing.module';
 
 @NgModule({
   declarations: [],
-  imports: [AuthenticationModule, ProductsModule],
+  imports: [CoreRoutingModule],
 })
 export class CoreModule {}
