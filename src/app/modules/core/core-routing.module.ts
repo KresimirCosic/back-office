@@ -16,6 +16,11 @@ const routes: Routes = [
         (module) => module.ProductsModule
       ),
   },
+  {
+    path: '**',
+    redirectTo: 'products',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
