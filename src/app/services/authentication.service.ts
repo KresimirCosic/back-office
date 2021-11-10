@@ -1,22 +1,25 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-import { IEmployee } from '../models/Employee.model';
+import { IAuthenticationState } from '../models/state/authentication-state.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-  private readonly _employee = new BehaviorSubject<IEmployee>({ username: '' });
-  readonly employee$ = this._employee.asObservable();
+  private readonly _authenticationState =
+    new BehaviorSubject<IAuthenticationState>({
+      username: '',
+    });
+  readonly authenticationState$ = this._authenticationState.asObservable();
 
   constructor() {}
 
   login(username: string): void {
-    this._employee.next({ username });
+    this._authenticationState.next({ username });
   }
 
   logout(): void {
-    this._employee.next({ username: '' });
+    this._authenticationState.next({ username: '' });
   }
 }

@@ -1,5 +1,11 @@
-<ng-container *ngIf="employee$ | async as employee">
-  <button *ngIf="!employee.username" (click)="handleLogin()">Login</button>
-  <button *ngIf="employee.username" (click)="handleLogout()">Logout</button>
-  <h1 *ngIf="employee.username">Hello {{ employee.username }}</h1>
+<ng-container *ngIf="authenticationState$ | async as authenticationState">
+  <button *ngIf="!authenticationState.username" (click)="handleLogin()">
+    Login
+  </button>
+  <button *ngIf="authenticationState.username" (click)="handleLogout()">
+    Logout
+  </button>
+  <h1 *ngIf="authenticationState.username">
+    Hello {{ authenticationState.username }}
+  </h1>
 </ng-container>

@@ -8,7 +8,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent implements OnInit {
-  employee$ = this._authenticationService.employee$;
+  authenticationState$ = this._authenticationService.authenticationState$;
 
   constructor(private _authenticationService: AuthenticationService) {}
 
