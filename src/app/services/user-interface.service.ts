@@ -8,7 +8,7 @@ import { IUserInterfaceState } from '../models/state/user-interface-state.model'
 })
 export class UserInterfaceService {
   private readonly _userInterfaceState =
-    new BehaviorSubject<IUserInterfaceState>({ loading: true });
+    new BehaviorSubject<IUserInterfaceState>({ loading: false });
   readonly userInterfaceState$ = this._userInterfaceState.asObservable();
 
   constructor() {}

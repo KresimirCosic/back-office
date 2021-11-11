@@ -1,5 +1,5 @@
 import { IProduct } from '../entities/Product.entity';
-import { IStatsCategories } from 'src/app/models/entities/StatsCategories.entity';
+import { IStatsCategories } from '../entities/StatsCategories.entity';
 
 export interface IProductsState {
   products: IProduct[];

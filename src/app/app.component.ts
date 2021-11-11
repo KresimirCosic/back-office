@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+import { UserInterfaceService } from './services/user-interface.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'back-office';
+  userInterfaceState$ = this._userInterfaceService.userInterfaceState$;
+
+  constructor(private _userInterfaceService: UserInterfaceService) {}
 }

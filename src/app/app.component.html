@@ -1,1 +1,7 @@
-<router-outlet></router-outlet>
+<app-sidenav></app-sidenav>
+<app-page>
+  <router-outlet></router-outlet>
+</app-page>
+<ng-container *ngIf="userInterfaceState$ | async as userInterfaceState">
+  <app-loader *ngIf="userInterfaceState.loading"></app-loader>
+</ng-container>
