@@ -11,4 +11,8 @@ export class AppComponent {
   userInterfaceState$ = this._userInterfaceService.userInterfaceState$;
 
   constructor(private _userInterfaceService: UserInterfaceService) {}
+
+  handleClosingSidenav(): void {
+    this._userInterfaceService.closeSidenav();
+  }
 }

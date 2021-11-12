@@ -29,4 +29,11 @@ export class UserInterfaceService {
       sidenavOpened: false,
     });
   }
+
+  toggleSidenav(): void {
+    this._userInterfaceState.next({
+      ...this._userInterfaceState.getValue(),
+      sidenavOpened: !this._userInterfaceState.getValue().sidenavOpened,
+    });
+  }
 }

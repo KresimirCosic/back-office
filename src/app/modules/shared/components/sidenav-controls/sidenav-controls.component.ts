@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UserInterfaceService } from 'src/app/services/user-interface.service';
+import { UserInterfaceService } from '../../../../services/user-interface.service';
 
 @Component({
   selector: 'app-sidenav-controls',
@@ -14,11 +14,7 @@ export class SidenavControlsComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  handleOpeningSidenav(): void {
-    this._userInterfaceService.openSidenav();
-  }
-
-  handleClosingSidenav(): void {
-    this._userInterfaceService.closeSidenav();
+  toggleSidenav(): void {
+    this._userInterfaceService.toggleSidenav();
   }
 }

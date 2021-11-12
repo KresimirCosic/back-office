@@ -4,5 +4,9 @@
   <app-page>
     <router-outlet></router-outlet>
   </app-page>
+  <app-overlay
+    *ngIf="userInterfaceState.sidenavOpened"
+    (click)="handleClosingSidenav()"
+  ></app-overlay>
   <app-loader *ngIf="userInterfaceState.loading"></app-loader>
 </ng-container>
