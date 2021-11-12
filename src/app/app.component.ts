@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 
 import { UserInterfaceService } from './services/user-interface.service';
 

@@ -6,9 +6,15 @@ import { MaterialModule } from '../material/material.module';
 import { PageComponent } from './components/page/page.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { SidenavControlsComponent } from './components/sidenav-controls/sidenav-controls.component';
 
 const sharedModules = [CommonModule, MaterialModule];
-const sharedComponents = [PageComponent, SidenavComponent, LoaderComponent];
+const sharedComponents = [
+  PageComponent,
+  SidenavComponent,
+  SidenavControlsComponent,
+  LoaderComponent,
+];
 
 @NgModule({
   declarations: [...sharedComponents],

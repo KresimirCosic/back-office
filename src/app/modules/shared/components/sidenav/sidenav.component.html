@@ -1,1 +1,9 @@
-<p>sidenav works!</p>
+<ng-container *ngIf="userInterfaceState$ | async as userInterfaceState">
+  <div id="sidenav" class="sidenav">
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+  </div>
+</ng-container>
