@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UserInterfaceService } from '../../../../services/user-interface.service';
+import { AuthenticationService } from '../../../../services/authentication.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -8,9 +8,13 @@ import { UserInterfaceService } from '../../../../services/user-interface.servic
   styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent implements OnInit {
-  userInterfaceState$ = this._userInterfaceService.userInterfaceState$;
+  authenticationState$ = this._authenticationService.authenticationState$;
 
-  constructor(private _userInterfaceService: UserInterfaceService) {}
+  constructor(private _authenticationService: AuthenticationService) {}
 
   ngOnInit(): void {}
+
+  handleLogout(): void {
+    this._authenticationService.logout();
+  }
 }

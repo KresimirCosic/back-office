@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from '../material/material.module';
 
@@ -20,7 +21,7 @@ const sharedComponents = [
 
 @NgModule({
   declarations: [...sharedComponents],
-  imports: [...sharedModules],
+  imports: [RouterModule, ...sharedModules],
   exports: [...sharedModules, ...sharedComponents],
 })
 export class SharedModule {}

@@ -1,9 +1,19 @@
-<ng-container *ngIf="userInterfaceState$ | async as userInterfaceState">
+<ng-container *ngIf="authenticationState$ | async as authenticationState">
   <div id="sidenav" class="sidenav">
-    <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
+    <ul class="sidenav-menu">
+      <li class="sidenav-menu-item" *ngIf="!authenticationState.username">
+        <a class="sidenav-menu-item-link" routerLink="authentication/login"
+          >Login</a
+        >
+      </li>
+      <li class="sidenav-menu-item" *ngIf="authenticationState.username">
+        <a class="sidenav-menu-item-link" routerLink="products">Products</a>
+      </li>
+      <li class="sidenav-menu-item" *ngIf="authenticationState.username">
+        <button mat-raised-button color="warn" (click)="handleLogout()">
+          Logout
+        </button>
+      </li>
     </ul>
   </div>
 </ng-container>
