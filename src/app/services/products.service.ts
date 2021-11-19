@@ -12,6 +12,7 @@ export class ProductsService extends APIService {
     products: [],
     product: undefined,
     stats: undefined,
+    APIRequests: [],
   });
   readonly productsState$ = this._productsState.asObservable();
 

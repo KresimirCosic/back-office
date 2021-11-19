@@ -12,7 +12,7 @@ export class AuthenticationService extends APIService {
   private readonly _authenticationState =
     new BehaviorSubject<IAuthenticationState>({
       username: '',
-      APIrequests: [],
+      APIRequests: [],
     });
   readonly authenticationState$ = this._authenticationState.asObservable();
 
@@ -26,17 +26,17 @@ export class AuthenticationService extends APIService {
 
     this._authenticationState.next({
       ...this._authenticationState.getValue(),
-      APIrequests: [newRequestID],
+      APIRequests: [newRequestID],
     });
 
     setTimeout(() => {
       this._authenticationState.next({
         ...this._authenticationState.getValue(),
         username,
-        APIrequests: [
+        APIRequests: [
           ...this._authenticationState
             .getValue()
-            ['APIrequests'].filter((requestID) => requestID !== newRequestID),
+            ['APIRequests'].filter((requestID) => requestID !== newRequestID),
         ],
       });
     }, 1000);

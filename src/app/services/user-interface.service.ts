@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, combineLatest } from 'rxjs';
 
 import { IUserInterfaceState } from '../models/state/user-interface-state.model';
 import { AuthenticationService } from './authentication.service';
@@ -20,22 +20,22 @@ export class UserInterfaceService {
     private _authenticationService: AuthenticationService,
     private _productsService: ProductsService
   ) {
-    this._authenticationService.authenticationState$.subscribe(
-      // todo
-      (authenticationState) => {
-        if (authenticationState.APIrequests.length) {
-          this._userInterfaceState.next({
-            ...this._userInterfaceState.getValue(),
-            loading: true,
-          });
-        } else {
-          this._userInterfaceState.next({
-            ...this._userInterfaceState.getValue(),
-            loading: false,
-          });
-        }
+    combineLatest([
+      this._authenticationService.authenticationState$,
+      this._productsService.productsState$,
+    ]).subscribe((APIServices) => {
+      if (APIServices.some((APIStates) => APIStates.APIRequests.length > 0)) {
+        this._userInterfaceState.next({
+          ...this._userInterfaceState.getValue(),
+          loading: true,
+        });
+      } else {
+        this._userInterfaceState.next({
+          ...this._userInterfaceState.getValue(),
+          loading: false,
+        });
       }
-    );
+    });
   }
 
   openSidenav(): void {

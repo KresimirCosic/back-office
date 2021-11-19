@@ -5,4 +5,5 @@ export interface IProductsState {
   products: IProduct[];
   product: IProduct | undefined;
   stats: IStatsCategories | undefined;
+  APIRequests: string[];
 }
