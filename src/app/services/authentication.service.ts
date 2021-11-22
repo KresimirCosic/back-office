@@ -43,7 +43,9 @@ export class AuthenticationService extends APIService {
   public login(username: string): void {
     const newAPIRequestID: string = v4();
 
-    this._updateState({ APIRequests: [newAPIRequestID] });
+    this._updateState({
+      APIRequests: [...this._cloneState().APIRequests, newAPIRequestID],
+    });
 
     setTimeout(() => {
       this._updateState({
@@ -56,7 +58,9 @@ export class AuthenticationService extends APIService {
   public logout(): void {
     const newAPIRequestID: string = v4();
 
-    this._updateState({ APIRequests: [newAPIRequestID] });
+    this._updateState({
+      APIRequests: [...this._cloneState().APIRequests, newAPIRequestID],
+    });
 
     setTimeout(() => {
       this._updateState({
