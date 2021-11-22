@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { v4 } from 'uuid';
+import { cloneDeep } from 'lodash';
 
 import { APIService } from './api.service';
 import { IAuthenticationState } from '../models/state/authentication-state.model';
@@ -20,32 +21,45 @@ export class AuthenticationService extends APIService {
     super();
   }
 
-  login(username: string): void {
-    // todo
-    const newRequestID: string = v4();
+  private cloneState(): IAuthenticationState {
+    return cloneDeep(this._authenticationState.getValue());
+  }
+
+  private removeAPIRequestID(newAPIRequestID: string): string[] {
+    return this.cloneState()['APIRequests'].filter(
+      (APIRequestID) => APIRequestID !== newAPIRequestID
+    );
+  }
+
+  public login(username: string): void {
+    const newAPIRequestID: string = v4();
 
     this._authenticationState.next({
-      ...this._authenticationState.getValue(),
-      APIRequests: [newRequestID],
+      ...this.cloneState(),
+      APIRequests: [newAPIRequestID],
     });
 
     setTimeout(() => {
       this._authenticationState.next({
-        ...this._authenticationState.getValue(),
         username,
-        APIRequests: [
-          ...this._authenticationState
-            .getValue()
-            ['APIRequests'].filter((requestID) => requestID !== newRequestID),
-        ],
+        APIRequests: this.removeAPIRequestID(newAPIRequestID),
       });
-    }, 1000);
+    }, this.fakeAPIRequestDuration);
   }
 
-  logout(): void {
+  public logout(): void {
+    const newAPIRequestID: string = v4();
+
     this._authenticationState.next({
-      ...this._authenticationState.getValue(),
-      username: '',
+      ...this.cloneState(),
+      APIRequests: [newAPIRequestID],
     });
+
+    setTimeout(() => {
+      this._authenticationState.next({
+        username: '',
+        APIRequests: this.removeAPIRequestID(newAPIRequestID),
+      });
+    }, this.fakeAPIRequestDuration);
   }
 }
