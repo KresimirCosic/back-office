@@ -56,7 +56,7 @@ export class UserInterfaceService {
 
   toggleSidenav(): void {
     this._updateState({
-      sidenavOpened: !this._userInterfaceState.getValue().sidenavOpened,
+      sidenavOpened: !this._cloneState().sidenavOpened,
     });
   }
 }
