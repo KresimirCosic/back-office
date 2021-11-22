@@ -21,12 +21,21 @@ export class AuthenticationService extends APIService {
     super();
   }
 
-  private cloneState(): IAuthenticationState {
+  private _cloneState(): IAuthenticationState {
     return cloneDeep(this._authenticationState.getValue());
   }
 
-  private removeAPIRequestID(newAPIRequestID: string): string[] {
-    return this.cloneState()['APIRequests'].filter(
+  private _updateState(
+    authenticationStateValue: Partial<IAuthenticationState>
+  ): void {
+    this._authenticationState.next({
+      ...this._cloneState(),
+      ...authenticationStateValue,
+    });
+  }
+
+  private _removeAPIRequestID(newAPIRequestID: string): string[] {
+    return this._cloneState()['APIRequests'].filter(
       (APIRequestID) => APIRequestID !== newAPIRequestID
     );
   }
@@ -34,15 +43,12 @@ export class AuthenticationService extends APIService {
   public login(username: string): void {
     const newAPIRequestID: string = v4();
 
-    this._authenticationState.next({
-      ...this.cloneState(),
-      APIRequests: [newAPIRequestID],
-    });
+    this._updateState({ APIRequests: [newAPIRequestID] });
 
     setTimeout(() => {
-      this._authenticationState.next({
+      this._updateState({
         username,
-        APIRequests: this.removeAPIRequestID(newAPIRequestID),
+        APIRequests: this._removeAPIRequestID(newAPIRequestID),
       });
     }, this.fakeAPIRequestDuration);
   }
@@ -50,15 +56,12 @@ export class AuthenticationService extends APIService {
   public logout(): void {
     const newAPIRequestID: string = v4();
 
-    this._authenticationState.next({
-      ...this.cloneState(),
-      APIRequests: [newAPIRequestID],
-    });
+    this._updateState({ APIRequests: [newAPIRequestID] });
 
     setTimeout(() => {
-      this._authenticationState.next({
+      this._updateState({
         username: '',
-        APIRequests: this.removeAPIRequestID(newAPIRequestID),
+        APIRequests: this._removeAPIRequestID(newAPIRequestID),
       });
     }, this.fakeAPIRequestDuration);
   }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, combineLatest } from 'rxjs';
+import { cloneDeep } from 'lodash';
 
 import { IUserInterfaceState } from '../models/state/user-interface-state.model';
 import { AuthenticationService } from './authentication.service';
@@ -25,36 +26,36 @@ export class UserInterfaceService {
       this._productsService.productsState$,
     ]).subscribe((APIServices) => {
       if (APIServices.some((APIStates) => APIStates.APIRequests.length > 0)) {
-        this._userInterfaceState.next({
-          ...this._userInterfaceState.getValue(),
-          loading: true,
-        });
+        this._updateState({ loading: true });
       } else {
-        this._userInterfaceState.next({
-          ...this._userInterfaceState.getValue(),
-          loading: false,
-        });
+        this._updateState({ loading: false });
       }
     });
   }
 
-  openSidenav(): void {
+  private _cloneState(): IUserInterfaceState {
+    return cloneDeep(this._userInterfaceState.getValue());
+  }
+
+  private _updateState(
+    userInterfaceStateValue: Partial<IUserInterfaceState>
+  ): void {
     this._userInterfaceState.next({
-      ...this._userInterfaceState.getValue(),
-      sidenavOpened: true,
+      ...this._cloneState(),
+      ...userInterfaceStateValue,
     });
+  }
+
+  openSidenav(): void {
+    this._updateState({ sidenavOpened: true });
   }
 
   closeSidenav(): void {
-    this._userInterfaceState.next({
-      ...this._userInterfaceState.getValue(),
-      sidenavOpened: false,
-    });
+    this._updateState({ sidenavOpened: false });
   }
 
   toggleSidenav(): void {
-    this._userInterfaceState.next({
-      ...this._userInterfaceState.getValue(),
+    this._updateState({
       sidenavOpened: !this._userInterfaceState.getValue().sidenavOpened,
     });
   }
