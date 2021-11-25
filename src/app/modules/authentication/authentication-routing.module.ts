@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AnonymityGuard } from 'src/app/guards/anonymity.guard';
+import { AnonymityGuard } from '../../guards/anonymity.guard';
 
 import { LoginComponent } from './components/pages/login/login.component';
 

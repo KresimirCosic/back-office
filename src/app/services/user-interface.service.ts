@@ -24,11 +24,15 @@ export class UserInterfaceService {
     combineLatest([
       this._authenticationService.authenticationState$,
       this._productsService.productsState$,
-    ]).subscribe((APIServices) => {
-      if (APIServices.some((APIStates) => APIStates.APIRequests.length > 0)) {
-        this._updateState({ loading: true });
+    ]).subscribe((statesOfAPIServices) => {
+      if (
+        statesOfAPIServices.some(
+          (stateOfAPIService) => stateOfAPIService.APIRequests.length > 0
+        )
+      ) {
+        this.openLoader();
       } else {
-        this._updateState({ loading: false });
+        this.closeLoader();
       }
     });
   }
@@ -57,6 +61,18 @@ export class UserInterfaceService {
   toggleSidenav(): void {
     this._updateState({
       sidenavOpened: !this._cloneState().sidenavOpened,
+    });
+  }
+
+  openLoader(): void {
+    this._updateState({
+      loading: true,
+    });
+  }
+
+  closeLoader(): void {
+    this._updateState({
+      loading: false,
     });
   }
 }
