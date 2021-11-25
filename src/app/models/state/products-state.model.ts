@@ -4,5 +4,6 @@ import { IStatsCategories } from '../entities/StatsCategories.entity';
 export interface IProductsState {
   products: IProduct[];
   product: IProduct | undefined;
-  stats: IStatsCategories | undefined;
+  stats: IStatsCategories[];
+  APIRequests: string[];
 }
