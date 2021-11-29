@@ -1,6 +1,6 @@
 <div id="errors" class="errors">
-  <ul>
-    <li *ngFor="let error of errors">
+  <ul class="errors-list">
+    <li class="errors-list-item" *ngFor="let error of errors">
       <h4>{{ error.id }}</h4>
       <p>{{ error.message }}</p>
     </li>

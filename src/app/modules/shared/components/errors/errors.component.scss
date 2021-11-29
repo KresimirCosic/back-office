@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 999;
+}
+
+.errors {
+  &-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    &-item {
+      box-shadow: -5px 5px 5px 0px rgba(0, 0, 0, 0.25);
+      border-radius: 5px;
+      padding: 2rem;
+      background-color: var(--color-warn);
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
