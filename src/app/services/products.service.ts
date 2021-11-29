@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { BehaviorSubject, catchError, throwError } from 'rxjs';
 import { cloneDeep } from 'lodash';
 import { v4 } from 'uuid';
 
 import { APIService } from './api.service';
+import { ErrorsService } from './errors.service';
 import { IProductsState } from '../models/state/products-state.model';
 import { IStatsCategories } from '../models/entities/StatsCategories.entity';
 import { IProduct } from '../models/entities/Product.entity';
@@ -23,7 +24,10 @@ export class ProductsService extends APIService {
   private readonly _productsAPI: string = `${this.API}/products`;
   private readonly _statsAPI: string = `${this.API}/stats/categories`;
 
-  constructor(private _http: HttpClient) {
+  constructor(
+    private _http: HttpClient,
+    private _errorsService: ErrorsService
+  ) {
     super();
   }
 
@@ -51,12 +55,27 @@ export class ProductsService extends APIService {
       APIRequests: [...this._cloneState().APIRequests, newAPIRequestID],
     });
 
-    this._http.get<IProduct[]>(this._productsAPI).subscribe((products) => {
-      this._updateState({
-        products,
-        APIRequests: this._removeAPIRequestID(newAPIRequestID),
+    this._http
+      .get<IProduct[]>(this._productsAPI)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          this._errorsService.createNewError(error.error);
+
+          this._updateState({
+            APIRequests: this._removeAPIRequestID(newAPIRequestID),
+          });
+
+          return throwError(
+            () => new Error('Something bad happened, please try again later.')
+          );
+        })
+      )
+      .subscribe((products) => {
+        this._updateState({
+          products,
+          APIRequests: this._removeAPIRequestID(newAPIRequestID),
+        });
       });
-    });
   }
 
   getCategories() {
@@ -66,11 +85,26 @@ export class ProductsService extends APIService {
       APIRequests: [...this._cloneState().APIRequests, newAPIRequestID],
     });
 
-    this._http.get<IStatsCategories[]>(this._statsAPI).subscribe((stats) => {
-      this._updateState({
-        stats,
-        APIRequests: this._removeAPIRequestID(newAPIRequestID),
+    this._http
+      .get<IStatsCategories[]>(this._statsAPI)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          this._errorsService.createNewError(error.error);
+
+          this._updateState({
+            APIRequests: this._removeAPIRequestID(newAPIRequestID),
+          });
+
+          return throwError(
+            () => new Error('Something bad happened, please try again later.')
+          );
+        })
+      )
+      .subscribe((stats) => {
+        this._updateState({
+          stats,
+          APIRequests: this._removeAPIRequestID(newAPIRequestID),
+        });
       });
-    });
   }
 }

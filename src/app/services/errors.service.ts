@@ -10,12 +10,7 @@ import { IErrorsState, IError } from '../models/state/errors-state.model';
 })
 export class ErrorsService {
   private readonly _errorsState = new BehaviorSubject<IErrorsState>({
-    errors: [
-      {
-        id: v4(),
-        message: 'Testing error',
-      },
-    ],
+    errors: [],
   });
   readonly errorsState$ = this._errorsState.asObservable();
   readonly errorDisplayDuration: number = 2000;
@@ -32,7 +27,7 @@ export class ErrorsService {
     });
   }
 
-  _createNewError(message: string): void {
+  createNewError(message: string): void {
     const newErrorID: string = v4();
     const newError: IError = { id: newErrorID, message };
 
