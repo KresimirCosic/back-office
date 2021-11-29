@@ -1,12 +1,14 @@
 <ng-container *ngIf="userInterfaceState$ | async as userInterfaceState">
-  <app-sidenav *ngIf="userInterfaceState.sidenavOpened"></app-sidenav>
-  <app-sidenav-controls></app-sidenav-controls>
-  <app-page>
-    <router-outlet></router-outlet>
-  </app-page>
-  <app-overlay
-    *ngIf="userInterfaceState.sidenavOpened"
-    (click)="handleClosingSidenav()"
-  ></app-overlay>
-  <app-loader *ngIf="userInterfaceState.loading"></app-loader>
+  <div id="app" class="app">
+    <app-sidenav *ngIf="userInterfaceState.sidenavOpened"></app-sidenav>
+    <app-sidenav-controls></app-sidenav-controls>
+    <app-page>
+      <router-outlet></router-outlet>
+    </app-page>
+    <app-overlay
+      *ngIf="userInterfaceState.sidenavOpened"
+      (click)="handleClosingSidenav()"
+    ></app-overlay>
+    <app-loader *ngIf="userInterfaceState.loading"></app-loader>
+  </div>
 </ng-container>
