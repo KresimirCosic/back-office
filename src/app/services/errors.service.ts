@@ -13,7 +13,7 @@ export class ErrorsService {
     errors: [],
   });
   readonly errorsState$ = this._errorsState.asObservable();
-  readonly errorDisplayDuration: number = 2000;
+  readonly errorDisplayDuration: number = 5000;
 
   constructor() {}
 
