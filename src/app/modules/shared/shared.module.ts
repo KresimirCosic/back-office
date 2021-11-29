@@ -4,19 +4,21 @@ import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from '../material/material.module';
 
+import { LoaderComponent } from './components/loader/loader.component';
+import { ErrorsComponent } from './components/errors/errors.component';
 import { PageComponent } from './components/page/page.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { LoaderComponent } from './components/loader/loader.component';
 import { SidenavControlsComponent } from './components/sidenav-controls/sidenav-controls.component';
 import { OverlayComponent } from './components/overlay/overlay.component';
 
 const sharedModules = [CommonModule, MaterialModule];
 const sharedComponents = [
+  LoaderComponent,
+  ErrorsComponent,
   PageComponent,
   SidenavComponent,
   SidenavControlsComponent,
   OverlayComponent,
-  LoaderComponent,
 ];
 
 @NgModule({

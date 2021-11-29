@@ -3,6 +3,7 @@ import { Event, Router, NavigationEnd } from '@angular/router';
 
 import { UserInterfaceService } from './services/user-interface.service';
 import { ProductsService } from './services/products.service';
+import { ErrorsService } from './services/errors.service';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +12,13 @@ import { ProductsService } from './services/products.service';
 })
 export class AppComponent implements OnInit {
   userInterfaceState$ = this._userInterfaceService.userInterfaceState$;
+  errorsState$ = this._erorrsService.errorsState$;
 
   constructor(
     private _router: Router,
     private _userInterfaceService: UserInterfaceService,
-    private _productsService: ProductsService
+    private _productsService: ProductsService,
+    private _erorrsService: ErrorsService
   ) {
     this._router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
