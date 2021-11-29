@@ -1,1 +1,45 @@
-<button mat-raised-button color="accent" (click)="handleLogin()">Login</button>
+<form
+  id="login-form"
+  class="login-form"
+  [formGroup]="loginForm"
+  (ngSubmit)="handleLogin()"
+>
+  <div class="login-form-field-container">
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label>Username</mat-label>
+      <input type="text" matInput formControlName="username" />
+      <mat-error *ngIf="loginForm.get('username')?.hasError('required')"
+        >Please enter your username</mat-error
+      >
+      <mat-error *ngIf="loginForm.get('username')?.hasError('minlength')"
+        >Username must be at least 2 characters long</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div class="login-form-field-container">
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput formControlName="password" />
+      <mat-error *ngIf="loginForm.get('password')?.hasError('required')"
+        >Please enter your password</mat-error
+      >
+      <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')"
+        >Password must be at least 6 characters long</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div class="login-form-field-container">
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit"
+      [disabled]="loginForm.invalid"
+      id="login-form-submit-button"
+      class="login-form-submit-button"
+    >
+      Login
+    </button>
+  </div>
+</form>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialModule } from '../material/material.module';
 
@@ -11,7 +12,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { SidenavControlsComponent } from './components/sidenav-controls/sidenav-controls.component';
 import { OverlayComponent } from './components/overlay/overlay.component';
 
-const sharedModules = [CommonModule, MaterialModule];
+const sharedModules = [CommonModule, MaterialModule, ReactiveFormsModule];
 const sharedComponents = [
   LoaderComponent,
   ErrorsComponent,
