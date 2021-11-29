@@ -1,19 +1,44 @@
-<ng-container *ngIf="authenticationState$ | async as authenticationState">
-  <div id="sidenav" class="sidenav">
-    <ul class="sidenav-menu">
+<div id="sidenav" class="sidenav">
+  <ul class="sidenav-menu">
+    <ng-container *ngIf="authenticationState$ | async as authenticationState">
       <li class="sidenav-menu-item" *ngIf="!authenticationState.username">
-        <a class="sidenav-menu-item-link" routerLink="authentication/login"
-          >Login</a
+        <button
+          mat-button
+          class="sidenav-menu-item-link"
+          routerLink="authentication/login"
+          routerLinkActive="active"
         >
+          Login
+        </button>
       </li>
+
       <li class="sidenav-menu-item" *ngIf="authenticationState.username">
-        <a class="sidenav-menu-item-link" routerLink="products">Products</a>
+        <button
+          mat-button
+          class="sidenav-menu-item-link"
+          routerLink="products"
+          routerLinkActive="active"
+        >
+          Products
+        </button>
       </li>
+
+      <li class="sidenav-menu-item" *ngIf="authenticationState.username">
+        <button
+          mat-button
+          class="sidenav-menu-item-link"
+          routerLink="stats"
+          routerLinkActive="active"
+        >
+          Stats
+        </button>
+      </li>
+
       <li class="sidenav-menu-item" *ngIf="authenticationState.username">
         <button mat-raised-button color="warn" (click)="handleLogout()">
           Logout
         </button>
       </li>
-    </ul>
-  </div>
-</ng-container>
+    </ng-container>
+  </ul>
+</div>

@@ -1,12 +1,12 @@
-<ng-container *ngIf="userInterfaceState$ | async as userInterfaceState">
-  <div id="sidenav-controls" class="sidenav-controls">
-    <button mat-button (click)="toggleSidenav()">
+<div id="sidenav-controls" class="sidenav-controls">
+  <button mat-button (click)="toggleSidenav()">
+    <ng-container *ngIf="userInterfaceState$ | async as userInterfaceState">
       <span class="material-icons" *ngIf="userInterfaceState.sidenavOpened"
         >close</span
       >
       <span class="material-icons" *ngIf="!userInterfaceState.sidenavOpened"
         >menu</span
       >
-    </button>
-  </div>
-</ng-container>
+    </ng-container>
+  </button>
+</div>
