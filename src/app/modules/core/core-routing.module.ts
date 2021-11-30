@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AnonymityGuard } from '../../guards/anonymity.guard';
+import { AuthenticationGuard } from '../../guards/authentication.guard';
+
 const routes: Routes = [
   {
     path: 'authentication',
@@ -8,6 +11,7 @@ const routes: Routes = [
       import('../authentication/authentication.module').then(
         (module) => module.AuthenticationModule
       ),
+    canActivate: [AnonymityGuard],
   },
   {
     path: 'products',
@@ -15,6 +19,7 @@ const routes: Routes = [
       import('../products/products.module').then(
         (module) => module.ProductsModule
       ),
+    canActivate: [AuthenticationGuard],
   },
   {
     path: '**',

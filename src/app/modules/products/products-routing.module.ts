@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthenticationGuard } from '../../guards/authentication.guard';
-
 import { HomeComponent } from './components/pages/home/home.component';
+import { ProductComponent } from './components/pages/product/product.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthenticationGuard] },
+  { path: '', component: HomeComponent },
+  {
+    path: ':id',
+    component: ProductComponent,
+  },
 ];
 
 @NgModule({
