@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Event, Router, NavigationEnd } from '@angular/router';
+import { Observable } from 'rxjs';
+
+import { IUserInterfaceState } from './models/state/user-interface-state.model';
+import { IErrorsState } from './models/state/errors-state.model';
 
 import { UserInterfaceService } from './services/user-interface.service';
 import { ProductsService } from './services/products.service';
@@ -11,8 +15,8 @@ import { ErrorsService } from './services/errors.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  userInterfaceState$ = this._userInterfaceService.userInterfaceState$;
-  errorsState$ = this._erorrsService.errorsState$;
+  userInterfaceState$: Observable<IUserInterfaceState>;
+  errorsState$: Observable<IErrorsState>;
 
   constructor(
     private _router: Router,
@@ -20,6 +24,9 @@ export class AppComponent implements OnInit {
     private _productsService: ProductsService,
     private _erorrsService: ErrorsService
   ) {
+    this.userInterfaceState$ = this._userInterfaceService.userInterfaceState$;
+    this.errorsState$ = this._erorrsService.errorsState$;
+
     this._router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         this._userInterfaceService.closeSidenav();

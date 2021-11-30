@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { IAuthenticationState } from '../../../../models/state/authentication-state.model';
 
 import { AuthenticationService } from '../../../../services/authentication.service';
 
@@ -8,9 +11,12 @@ import { AuthenticationService } from '../../../../services/authentication.servi
   styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent implements OnInit {
-  authenticationState$ = this._authenticationService.authenticationState$;
+  authenticationState$: Observable<IAuthenticationState>;
 
-  constructor(private _authenticationService: AuthenticationService) {}
+  constructor(private _authenticationService: AuthenticationService) {
+    this.authenticationState$ =
+      this._authenticationService.authenticationState$;
+  }
 
   ngOnInit(): void {}
 

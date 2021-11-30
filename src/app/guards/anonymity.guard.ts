@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import {
   Router,
   ActivatedRouteSnapshot,
@@ -6,7 +7,8 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+
+import { IAuthenticationState } from '../models/state/authentication-state.model';
 
 import { AuthenticationService } from '../services/authentication.service';
 
@@ -14,12 +16,15 @@ import { AuthenticationService } from '../services/authentication.service';
   providedIn: 'root',
 })
 export class AnonymityGuard implements CanActivate {
-  authenticationState$ = this._authenticationService.authenticationState$;
+  authenticationState$: Observable<IAuthenticationState>;
 
   constructor(
     private _authenticationService: AuthenticationService,
     private _router: Router
-  ) {}
+  ) {
+    this.authenticationState$ =
+      this._authenticationService.authenticationState$;
+  }
 
   canActivate(
     route: ActivatedRouteSnapshot,
