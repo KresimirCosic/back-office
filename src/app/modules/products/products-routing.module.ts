@@ -8,12 +8,12 @@ import { StatsComponent } from './components/pages/stats/stats.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {
-    path: ':id',
-    component: ProductComponent,
-  },
-  {
     path: 'stats',
     component: StatsComponent,
+  },
+  {
+    path: ':id',
+    component: ProductComponent,
   },
 ];
 
