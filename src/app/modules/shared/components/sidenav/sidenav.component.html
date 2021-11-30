@@ -7,6 +7,7 @@
           class="sidenav-menu-item-link"
           routerLink="authentication/login"
           routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
         >
           Login
         </button>
@@ -18,6 +19,7 @@
           class="sidenav-menu-item-link"
           routerLink="products"
           routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
         >
           Products
         </button>
@@ -27,8 +29,9 @@
         <button
           mat-button
           class="sidenav-menu-item-link"
-          routerLink="stats"
+          routerLink="products/stats"
           routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
         >
           Stats
         </button>
