@@ -1,3 +1,26 @@
-<div class="product-list-controls">
-  <p>products-list-controls works!</p>
+<div class="products-list-controls">
+  <div class="products-list-controls-view">
+    <button mat-fab class="products-list-controls-view-button">
+      <span class="material-icons" *ngIf="gridView">view_agenda</span>
+      <span class="material-icons" *ngIf="!gridView">grid_view</span>
+    </button>
+  </div>
+
+  <div class="products-list-controls-pagination">
+    <button mat-button class="products-list-controls-pagination-button">
+      <span class="material-icons">arrow_left</span>
+    </button>
+    <button mat-button class="products-list-controls-pagination-button">
+      1
+    </button>
+    <button mat-button class="products-list-controls-pagination-button">
+      2
+    </button>
+    <button mat-button class="products-list-controls-pagination-button">
+      3
+    </button>
+    <button mat-button class="products-list-controls-pagination-button">
+      <span class="material-icons">arrow_right</span>
+    </button>
+  </div>
 </div>
