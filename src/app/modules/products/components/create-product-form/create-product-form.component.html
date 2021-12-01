@@ -1,0 +1,55 @@
+<form
+  id="create-product-form"
+  class="create-product-form"
+  [formGroup]="createProductForm"
+>
+  <div class="create-product-form-field-container">
+    <mat-form-field class="form-field">
+      <mat-label>Title</mat-label>
+      <input type="text" matInput formControlName="title" />
+      <mat-error *ngIf="createProductForm.get('title')?.hasError('required')"
+        >Please enter the product title</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div class="create-product-form-field-container">
+    <mat-form-field class="form-field">
+      <mat-label>Category</mat-label>
+      <input type="text" matInput formControlName="category" />
+      <mat-error *ngIf="createProductForm.get('category')?.hasError('required')"
+        >Please enter the product category</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div class="create-product-form-field-container">
+    <mat-form-field class="form-field">
+      <mat-label>Price</mat-label>
+      <input type="number" matInput formControlName="price" />
+      <mat-error *ngIf="createProductForm.get('price')?.hasError('required')"
+        >Please enter the product price</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div class="create-product-form-field-container">
+    <mat-form-field class="form-field">
+      <mat-label>Description (optional)</mat-label>
+      <textarea type="text" matInput formControlName="description"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="create-product-form-field-container">
+    <button
+      mat-fab
+      color="accent"
+      type="submit"
+      [disabled]="createProductForm.invalid"
+      id="create-product-form-submit-button"
+      class="create-product-form-submit-button"
+    >
+      <span class="material-icons">add</span>
+    </button>
+  </div>
+</form>

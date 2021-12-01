@@ -1,0 +1,9 @@
+<div id="product-list" class="product-list">
+  <ng-container *ngIf="productsState$ | async as productsState">
+    <app-products-list-controls></app-products-list-controls>
+    <app-products-list-items
+      [products]="productsState.products"
+    ></app-products-list-items>
+    <app-products-list-controls></app-products-list-controls>
+  </ng-container>
+</div>

@@ -1,5 +1,5 @@
 <div id="sidenav-controls" class="sidenav-controls">
-  <button mat-button (click)="toggleSidenav()">
+  <button mat-fab color="none" (click)="toggleSidenav()" color="accent">
     <ng-container *ngIf="userInterfaceState$ | async as userInterfaceState">
       <span class="material-icons" *ngIf="userInterfaceState.sidenavOpened"
         >close</span
