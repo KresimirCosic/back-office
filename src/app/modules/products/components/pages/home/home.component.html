@@ -1,9 +1,4 @@
 <div id="home" class="home">
   <app-create-product-form></app-create-product-form>
-
-  <ng-container *ngIf="productsState$ | async as productsState">
-    <app-products-list
-      *ngIf="productsState.products.length"
-    ></app-products-list>
-  </ng-container>
+  <app-products-list></app-products-list>
 </div>
