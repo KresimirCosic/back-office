@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { IProductsState } from '../../../../models/state/products-state.model';
+
+import { ProductsService } from '../../../../services/products.service';
 
 @Component({
   selector: 'app-products-list',
@@ -6,7 +11,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products-list.component.scss'],
 })
 export class ProductsListComponent implements OnInit {
-  constructor() {}
+  productsState$: Observable<IProductsState>;
+  gridView: boolean = false;
+
+  constructor(private _productsService: ProductsService) {
+    this.productsState$ = this._productsService.productsState$;
+  }
 
   ngOnInit(): void {}
+
+  toggleGridView(): void {
+    this.gridView = !this.gridView;
+  }
 }

@@ -1,3 +1,37 @@
-<div class="product-list-item">
-  <p>products-list-item works!</p>
+<div *ngIf="product" class="products-list-item">
+  <div class="products-list-item-splash">
+    <h2 class="products-list-item-splash-title">{{ product.data.title }}</h2>
+    <h4 class="products-list-item-splash-employee">
+      <small
+        ><i
+          >Made by <strong>{{ product.data.employee }}</strong></i
+        ></small
+      >
+    </h4>
+  </div>
+
+  <div class="products-list-item-summary">
+    <div class="products-list-item-summary-info">
+      <h4 class="products-list-item-summary-info-category">
+        {{ product.data.category }}
+      </h4>
+      <p
+        class="products-list-item-summary-info-description"
+        *ngIf="product.data.description"
+      >
+        {{ product.data.description }}
+      </p>
+    </div>
+
+    <div class="products-list-item-summary-controls">
+      <button
+        mat-raised-button
+        color="primary"
+        [routerLink]="['/products', product.id]"
+      >
+        Edit
+      </button>
+      <button mat-raised-button color="warn">Delete</button>
+    </div>
+  </div>
 </div>

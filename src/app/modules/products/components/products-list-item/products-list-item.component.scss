@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  width: 100%;
+  box-shadow: 2px 2px 5px 0px rgba(71, 38, 38, 0.35);
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  &:hover {
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+  }
+}
+
+.products-list-item {
+  display: flex;
+  justify-content: space-between;
+  > * {
+    padding: 4rem 2rem;
+  }
+  &-splash {
+    width: 30%;
+    background-color: var(--color-accent);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    &-title {
+      margin: 0;
+    }
+  }
+  &-summary {
+    width: 70%;
+  }
+}
