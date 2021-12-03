@@ -1,9 +1,23 @@
-<div id="product-list" class="product-list">
-  <ng-container *ngIf="productsState$ | async as productsState">
-    <app-products-list-controls></app-products-list-controls>
+<ng-container *ngIf="vm$ | async as vm"
+  ><div
+    id="product-list"
+    class="product-list"
+    [ngClass]="vm.paginationControls.gridView ? 'grid-view' : ''"
+  >
+    <app-products-list-controls
+      (gridViewChange)="toggleGridView()"
+      [gridView]="vm.paginationControls.gridView"
+      [itemsPerPage]="vm.paginationControls.itemsPerPage"
+      [currentPage]="vm.paginationControls.currentPage"
+    ></app-products-list-controls>
     <app-products-list-items
-      [products]="productsState.products"
+      [products]="vm.filteredProducts"
     ></app-products-list-items>
-    <app-products-list-controls></app-products-list-controls>
-  </ng-container>
-</div>
+    <app-products-list-controls
+      (gridViewChange)="toggleGridView()"
+      [gridView]="vm.paginationControls.gridView"
+      [itemsPerPage]="vm.paginationControls.itemsPerPage"
+      [currentPage]="vm.paginationControls.currentPage"
+    ></app-products-list-controls>
+  </div>
+</ng-container>

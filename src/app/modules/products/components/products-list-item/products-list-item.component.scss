@@ -9,6 +9,10 @@
   }
 }
 
+:host-context(.grid-view) {
+  max-width: 49%;
+}
+
 .products-list-item {
   display: flex;
   justify-content: space-between;
