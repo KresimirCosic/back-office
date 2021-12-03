@@ -11,20 +11,42 @@
   </div>
 
   <div class="products-list-controls-pagination">
-    <button mat-button class="products-list-controls-pagination-button">
-      <span class="material-icons">arrow_left</span>
+    <button
+      mat-button
+      class="products-list-controls-pagination-button"
+      (click)="handleCurrentPageChange('start')"
+    >
+      <span class="material-icons">first_page</span>
     </button>
-    <button mat-button class="products-list-controls-pagination-button">
-      1
+    <button
+      mat-button
+      class="products-list-controls-pagination-button"
+      (click)="handleCurrentPageChange('previous')"
+    >
+      <span class="material-icons">navigate_before</span>
     </button>
-    <button mat-button class="products-list-controls-pagination-button">
-      2
+    <button
+      mat-raised-button
+      *ngFor="let page of totalPages"
+      class="products-list-controls-pagination-button"
+      [color]="page + 1 === currentPage ? 'primary' : 'accent'"
+      (click)="handleCurrentPageChange(page)"
+    >
+      {{ page + 1 }}
     </button>
-    <button mat-button class="products-list-controls-pagination-button">
-      3
+    <button
+      mat-button
+      class="products-list-controls-pagination-button"
+      (click)="handleCurrentPageChange('next')"
+    >
+      <span class="material-icons">navigate_next</span>
     </button>
-    <button mat-button class="products-list-controls-pagination-button">
-      <span class="material-icons">arrow_right</span>
+    <button
+      mat-button
+      class="products-list-controls-pagination-button"
+      (click)="handleCurrentPageChange('end')"
+    >
+      <span class="material-icons">last_page</span>
     </button>
   </div>
 </div>

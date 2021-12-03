@@ -5,19 +5,23 @@
     [ngClass]="vm.paginationControls.gridView ? 'grid-view' : ''"
   >
     <app-products-list-controls
-      (gridViewChange)="toggleGridView()"
+      [filteredProducts]="vm.filteredProducts"
       [gridView]="vm.paginationControls.gridView"
       [itemsPerPage]="vm.paginationControls.itemsPerPage"
       [currentPage]="vm.paginationControls.currentPage"
+      (gridViewChange)="toggleGridView()"
+      (currentPageChange)="changeCurrentPage($event)"
     ></app-products-list-controls>
     <app-products-list-items
       [products]="vm.filteredProducts"
     ></app-products-list-items>
     <app-products-list-controls
-      (gridViewChange)="toggleGridView()"
+      [filteredProducts]="vm.filteredProducts"
       [gridView]="vm.paginationControls.gridView"
       [itemsPerPage]="vm.paginationControls.itemsPerPage"
       [currentPage]="vm.paginationControls.currentPage"
+      (gridViewChange)="toggleGridView()"
+      (currentPageChange)="changeCurrentPage($event)"
     ></app-products-list-controls>
   </div>
 </ng-container>

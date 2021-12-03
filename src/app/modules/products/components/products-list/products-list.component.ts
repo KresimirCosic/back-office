@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 
 import { IProduct } from 'src/app/models/entities/Product.entity';
 import { IProductsState } from '../../../../models/state/products-state.model';
+import { ICurrentPageChangeEventMap } from '../products-list-controls/products-list-controls.component';
 
 import { ProductsService } from '../../../../services/products.service';
 
@@ -84,5 +85,41 @@ export class ProductsListComponent implements OnInit {
 
   toggleGridView(): void {
     this.gridView$.next(!this.gridView$.getValue());
+  }
+
+  changeCurrentPage(page: ICurrentPageChangeEventMap | number) {
+    const currentPage = this.currentPage$.getValue();
+
+    switch (page) {
+      case 'start':
+        this.currentPage$.next(1);
+        break;
+      case 'previous':
+        this.currentPage$.next(currentPage <= 1 ? 1 : currentPage - 1);
+        break;
+      case 'next':
+        this.filteredProducts$.pipe(take(1)).subscribe((filteredProducts) => {
+          const totalPages = Math.ceil(
+            filteredProducts.length / this.itemsPerPage$.getValue()
+          );
+
+          this.currentPage$.next(
+            currentPage === totalPages ? totalPages : currentPage + 1
+          );
+        });
+        break;
+      case 'end':
+        this.filteredProducts$.pipe(take(1)).subscribe((filteredProducts) => {
+          const totalPages = Math.ceil(
+            filteredProducts.length / this.itemsPerPage$.getValue()
+          );
+
+          this.currentPage$.next(totalPages);
+        });
+        break;
+      default:
+        this.currentPage$.next(page + 1);
+        break;
+    }
   }
 }
