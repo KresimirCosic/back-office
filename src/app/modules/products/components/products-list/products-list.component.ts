@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
-import { IProduct } from 'src/app/models/entities/Product.entity';
+import { IProduct } from '../../../../models/entities/Product.entity';
 import { IProductsState } from '../../../../models/state/products-state.model';
 import { ICurrentPageChangeEventMap } from '../products-list-controls/products-list-controls.component';
 
