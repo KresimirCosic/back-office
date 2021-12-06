@@ -32,12 +32,10 @@ export class ProductsListControlsComponent implements OnInit {
     >();
   }
 
-  ngOnInit(): void {
-    this.totalPages = Array.from(
-      Array(
-        Math.ceil(this.filteredProducts?.length! / this.itemsPerPage!)
-      ).keys()
-    );
+  ngOnInit(): void {}
+
+  ngOnChanges(): void {
+    this.generatePagingButtons();
   }
 
   handleGridViewChange(): void {
@@ -46,5 +44,13 @@ export class ProductsListControlsComponent implements OnInit {
 
   handleCurrentPageChange(newPage: ICurrentPageChangeEventMap | number): void {
     this.currentPageChange.emit(newPage);
+  }
+
+  generatePagingButtons(): void {
+    this.totalPages = Array.from(
+      Array(
+        Math.ceil(this.filteredProducts?.length! / this.itemsPerPage!)
+      ).keys()
+    );
   }
 }
