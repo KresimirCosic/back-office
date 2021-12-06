@@ -86,6 +86,146 @@ export class ProductsService extends APIService {
           description: 'Limp biscuits',
         },
       },
+      {
+        id: v4(),
+        data: {
+          title: 'Product 1',
+          category: 'Biscuits',
+          employee: 'John',
+          price: 22,
+          description: 'Limp biscuits',
+        },
+      },
+      {
+        id: v4(),
+        data: {
+          title: 'Product 2',
+          category: 'Biscuits',
+          employee: 'John',
+          price: 22,
+          description: 'Limp biscuits',
+        },
+      },
+      {
+        id: v4(),
+        data: {
+          title: 'Product 3',
+          category: 'Biscuits',
+          employee: 'John',
+          price: 22,
+          description: 'Limp biscuits',
+        },
+      },
+      {
+        id: v4(),
+        data: {
+          title: 'Product 4',
+          category: 'Biscuits',
+          employee: 'John',
+          price: 22,
+          description: 'Limp biscuits',
+        },
+      },
+      {
+        id: v4(),
+        data: {
+          title: 'Product 5',
+          category: 'Biscuits',
+          employee: 'John',
+          price: 22,
+          description: 'Limp biscuits',
+        },
+      },
+      {
+        id: v4(),
+        data: {
+          title: 'Product 6',
+          category: 'Biscuits',
+          employee: 'John',
+          price: 22,
+          description: 'Limp biscuits',
+        },
+      },
+      {
+        id: v4(),
+        data: {
+          title: 'Product 7',
+          category: 'Biscuits',
+          employee: 'John',
+          price: 22,
+          description: 'Limp biscuits',
+        },
+      },
+      {
+        id: v4(),
+        data: {
+          title: 'Product 1',
+          category: 'Biscuits',
+          employee: 'John',
+          price: 22,
+          description: 'Limp biscuits',
+        },
+      },
+      {
+        id: v4(),
+        data: {
+          title: 'Product 2',
+          category: 'Biscuits',
+          employee: 'John',
+          price: 22,
+          description: 'Limp biscuits',
+        },
+      },
+      {
+        id: v4(),
+        data: {
+          title: 'Product 3',
+          category: 'Biscuits',
+          employee: 'John',
+          price: 22,
+          description: 'Limp biscuits',
+        },
+      },
+      {
+        id: v4(),
+        data: {
+          title: 'Product 4',
+          category: 'Biscuits',
+          employee: 'John',
+          price: 22,
+          description: 'Limp biscuits',
+        },
+      },
+      {
+        id: v4(),
+        data: {
+          title: 'Product 5',
+          category: 'Biscuits',
+          employee: 'John',
+          price: 22,
+          description: 'Limp biscuits',
+        },
+      },
+      {
+        id: v4(),
+        data: {
+          title: 'Product 6',
+          category: 'Biscuits',
+          employee: 'John',
+          price: 22,
+          description: 'Limp biscuits',
+        },
+      },
+      {
+        id: v4(),
+        data: {
+          title: 'Product 7',
+          category: 'Biscuits',
+          employee: 'John',
+          price: 22,
+          description: 'Limp biscuits',
+        },
+      },
     ],
     product: undefined,
     stats: [],

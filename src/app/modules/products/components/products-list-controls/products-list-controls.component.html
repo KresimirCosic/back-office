@@ -29,7 +29,7 @@
     </button>
     <button
       mat-raised-button
-      *ngFor="let page of totalPages"
+      *ngFor="let page of pagesToRender"
       class="products-list-controls-pagination-button"
       [disabled]="currentPage === page + 1"
       (click)="handleCurrentPageChange(page)"

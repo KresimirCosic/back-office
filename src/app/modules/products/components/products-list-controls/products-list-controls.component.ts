@@ -19,6 +19,7 @@ export class ProductsListControlsComponent implements OnInit {
   @Output() currentPageChange: EventEmitter<
     ICurrentPageChangeEventMap | number
   >;
+  pagesToRender: number[];
 
   constructor() {
     this.filteredProducts = undefined;
@@ -30,6 +31,7 @@ export class ProductsListControlsComponent implements OnInit {
     this.currentPageChange = new EventEmitter<
       ICurrentPageChangeEventMap | number
     >();
+    this.pagesToRender = [1];
   }
 
   ngOnInit(): void {}
@@ -47,10 +49,30 @@ export class ProductsListControlsComponent implements OnInit {
   }
 
   generatePagingButtons(): void {
+    const pageButtonsOffset = 2;
+    const potentialPageButtonsToRender: number[] = [];
+
     this.totalPages = Array.from(
       Array(
         Math.ceil(this.filteredProducts?.length! / this.itemsPerPage!)
       ).keys()
     );
+
+    for (
+      let i = this.currentPage! - pageButtonsOffset - 1;
+      i < this.currentPage! + pageButtonsOffset;
+      i++
+    ) {
+      potentialPageButtonsToRender.push(i);
+    }
+
+    this.pagesToRender = potentialPageButtonsToRender.filter((page) => {
+      const maxPageNumber = Math.max(...this.totalPages);
+      if (!(page > maxPageNumber)) {
+        return page >= 0;
+      } else {
+        return;
+      }
+    });
   }
 }

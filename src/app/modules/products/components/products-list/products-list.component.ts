@@ -124,6 +124,7 @@ export class ProductsListComponent implements OnInit {
   }
 
   changeFilterBy(filterBy: string): void {
+    this.changeCurrentPage(0);
     this.filterBy$.next(filterBy);
   }
 }
