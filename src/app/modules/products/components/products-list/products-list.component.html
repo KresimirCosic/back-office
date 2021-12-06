@@ -14,6 +14,8 @@
     ></app-products-list-controls>
     <app-products-list-items
       [products]="vm.filteredProducts"
+      [itemsPerPage]="vm.paginationControls.itemsPerPage"
+      [currentPage]="vm.paginationControls.currentPage"
     ></app-products-list-items>
     <app-products-list-controls
       [filteredProducts]="vm.filteredProducts"
