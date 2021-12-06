@@ -1,0 +1,12 @@
+<form
+  id="products-list-filter-form"
+  class="products-list-filter-form"
+  [formGroup]="filterProductsForm"
+>
+  <div class="products-list-filter-form-field-container">
+    <mat-form-field class="form-field">
+      <mat-label>Filter by</mat-label>
+      <input type="text" matInput formControlName="filterBy" />
+    </mat-form-field>
+  </div>
+</form>

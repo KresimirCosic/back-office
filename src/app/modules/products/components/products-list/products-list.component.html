@@ -4,6 +4,9 @@
     class="product-list"
     [ngClass]="vm.paginationControls.gridView ? 'grid-view' : ''"
   >
+    <app-products-list-filter-form
+      (filterByChange)="changeFilterBy($event)"
+    ></app-products-list-filter-form>
     <app-products-list-controls
       [filteredProducts]="vm.filteredProducts"
       [gridView]="vm.paginationControls.gridView"

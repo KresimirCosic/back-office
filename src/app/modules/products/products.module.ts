@@ -12,6 +12,7 @@ import { ProductsListComponent } from './components/products-list/products-list.
 import { ProductsListControlsComponent } from './components/products-list-controls/products-list-controls.component';
 import { ProductsListItemsComponent } from './components/products-list-items/products-list-items.component';
 import { ProductsListItemComponent } from './components/products-list-item/products-list-item.component';
+import { ProductsListFilterFormComponent } from './components/products-list-filter-form/products-list-filter-form.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ProductsListItemComponent } from './components/products-list-item/produ
     ProductsListControlsComponent,
     ProductsListItemsComponent,
     ProductsListItemComponent,
+    ProductsListFilterFormComponent,
   ],
   imports: [SharedModule, ProductsRoutingModule],
 })

@@ -41,8 +41,6 @@ export class ProductsListComponent implements OnInit {
     this.filteredProducts$ = combineLatest([
       this.filterBy$,
       this.productsState$,
-      // this.itemsPerPage$,
-      // this.currentPage$,
     ]).pipe(
       map((observer) => {
         const filterBy = observer[0];
@@ -123,5 +121,9 @@ export class ProductsListComponent implements OnInit {
         this.currentPage$.next(page + 1);
         break;
     }
+  }
+
+  changeFilterBy(filterBy: string): void {
+    this.filterBy$.next(filterBy);
   }
 }
