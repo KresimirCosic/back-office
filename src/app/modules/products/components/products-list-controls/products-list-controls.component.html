@@ -19,6 +19,7 @@
     >
       <span class="material-icons">first_page</span>
     </button>
+
     <button
       mat-button
       class="products-list-controls-pagination-button"
@@ -27,15 +28,19 @@
     >
       <span class="material-icons">navigate_before</span>
     </button>
-    <button
-      mat-raised-button
-      *ngFor="let page of pagesToRender"
-      class="products-list-controls-pagination-button"
-      [disabled]="currentPage === page + 1"
-      (click)="handleCurrentPageChange(page)"
-    >
-      {{ page + 1 }}
-    </button>
+
+    <div class="products-list-controls-pagination-button-container">
+      <button
+        mat-raised-button
+        *ngFor="let page of pagesToRender"
+        class="products-list-controls-pagination-button page-button"
+        [disabled]="currentPage === page + 1"
+        (click)="handleCurrentPageChange(page)"
+      >
+        {{ page + 1 }}
+      </button>
+    </div>
+
     <button
       mat-button
       class="products-list-controls-pagination-button"
@@ -44,6 +49,7 @@
     >
       <span class="material-icons">navigate_next</span>
     </button>
+
     <button
       mat-button
       class="products-list-controls-pagination-button"
