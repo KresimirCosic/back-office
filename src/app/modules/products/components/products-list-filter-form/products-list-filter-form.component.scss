@@ -1,0 +1,13 @@
+.products-list-filter-form {
+  max-width: 500px;
+  min-width: 250px;
+  width: 100%;
+  margin: 0 auto;
+  &-field-container {
+    width: 100%;
+    padding: 1rem;
+    .form-field {
+      width: 100%;
+    }
+  }
+}

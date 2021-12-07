@@ -11,23 +11,25 @@
   </div>
 
   <div class="products-list-controls-pagination">
-    <button
-      mat-button
-      class="products-list-controls-pagination-button"
-      [disabled]="currentPage === 1"
-      (click)="handleCurrentPageChange('start')"
-    >
-      <span class="material-icons">first_page</span>
-    </button>
+    <div class="products-list-controls-pagination-button-container">
+      <button
+        mat-button
+        class="products-list-controls-pagination-button"
+        [disabled]="currentPage === 1"
+        (click)="handleCurrentPageChange('start')"
+      >
+        <span class="material-icons">first_page</span>
+      </button>
 
-    <button
-      mat-button
-      class="products-list-controls-pagination-button"
-      [disabled]="currentPage === 1"
-      (click)="handleCurrentPageChange('previous')"
-    >
-      <span class="material-icons">navigate_before</span>
-    </button>
+      <button
+        mat-button
+        class="products-list-controls-pagination-button"
+        [disabled]="currentPage === 1"
+        (click)="handleCurrentPageChange('previous')"
+      >
+        <span class="material-icons">navigate_before</span>
+      </button>
+    </div>
 
     <div class="products-list-controls-pagination-button-container">
       <button
@@ -41,22 +43,28 @@
       </button>
     </div>
 
-    <button
-      mat-button
-      class="products-list-controls-pagination-button"
-      [disabled]="currentPage === totalPages.length"
-      (click)="handleCurrentPageChange('next')"
-    >
-      <span class="material-icons">navigate_next</span>
-    </button>
+    <div class="products-list-controls-pagination-button-container">
+      <button
+        mat-button
+        class="products-list-controls-pagination-button"
+        [disabled]="
+          currentPage !== undefined && currentPage >= totalPages.length
+        "
+        (click)="handleCurrentPageChange('next')"
+      >
+        <span class="material-icons">navigate_next</span>
+      </button>
 
-    <button
-      mat-button
-      class="products-list-controls-pagination-button"
-      [disabled]="currentPage === totalPages.length"
-      (click)="handleCurrentPageChange('end')"
-    >
-      <span class="material-icons">last_page</span>
-    </button>
+      <button
+        mat-button
+        class="products-list-controls-pagination-button"
+        [disabled]="
+          currentPage !== undefined && currentPage >= totalPages.length
+        "
+        (click)="handleCurrentPageChange('end')"
+      >
+        <span class="material-icons">last_page</span>
+      </button>
+    </div>
   </div>
 </div>

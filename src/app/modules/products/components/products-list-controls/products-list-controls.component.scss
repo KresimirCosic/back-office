@@ -8,6 +8,8 @@
   }
   &-pagination {
     display: flex;
+    width: 100%;
+    justify-content: space-between;
     &-button {
       &.page-button {
         &:not(:last-child) {
