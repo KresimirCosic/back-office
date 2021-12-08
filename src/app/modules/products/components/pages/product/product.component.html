@@ -1,1 +1,7 @@
-<p>product works!</p>
+<ng-container *ngIf="productsState$ | async as productsState">
+  <div id="product" class="product">
+    <app-edit-product-form
+      [product]="productsState.product"
+    ></app-edit-product-form>
+  </div>
+</ng-container>

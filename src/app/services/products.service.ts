@@ -259,7 +259,7 @@ export class ProductsService extends APIService {
     );
   }
 
-  getProducts() {
+  getProducts(): void {
     const newAPIRequestID: string = v4();
 
     this._updateState({
@@ -289,7 +289,7 @@ export class ProductsService extends APIService {
       });
   }
 
-  getCategories() {
+  getCategories(): void {
     const newAPIRequestID: string = v4();
 
     this._updateState({
@@ -317,5 +317,19 @@ export class ProductsService extends APIService {
           APIRequests: this._removeAPIRequestID(newAPIRequestID),
         });
       });
+  }
+
+  setEditingProduct(productID: string): void {
+    this._updateState({
+      product: this._productsState
+        .getValue()
+        .products.filter((product) => product.id === productID)[0],
+    });
+  }
+
+  removeEditingProduct(): void {
+    this._updateState({
+      product: undefined,
+    });
   }
 }

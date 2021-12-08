@@ -13,6 +13,7 @@ import { ProductsListControlsComponent } from './components/products-list-contro
 import { ProductsListItemsComponent } from './components/products-list-items/products-list-items.component';
 import { ProductsListItemComponent } from './components/products-list-item/products-list-item.component';
 import { ProductsListFilterFormComponent } from './components/products-list-filter-form/products-list-filter-form.component';
+import { EditProductFormComponent } from './components/edit-product-form/edit-product-form.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ProductsListFilterFormComponent } from './components/products-list-filt
     ProductsListItemsComponent,
     ProductsListItemComponent,
     ProductsListFilterFormComponent,
+    EditProductFormComponent,
   ],
   imports: [SharedModule, ProductsRoutingModule],
 })
