@@ -2,6 +2,7 @@
   id="create-product-form"
   class="create-product-form"
   [formGroup]="createProductForm"
+  (ngSubmit)="onCreateProduct()"
 >
   <div class="create-product-form-field-container">
     <mat-form-field class="form-field">

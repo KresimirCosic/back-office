@@ -4,11 +4,12 @@ import { BehaviorSubject, catchError, throwError } from 'rxjs';
 import { cloneDeep } from 'lodash';
 import { v4 } from 'uuid';
 
-import { APIService } from './api.service';
-import { ErrorsService } from './errors.service';
 import { IProductsState } from '../models/state/products-state.model';
 import { IStatsCategories } from '../models/entities/StatsCategories.entity';
 import { IProduct } from '../models/entities/Product.entity';
+
+import { APIService } from './api.service';
+import { ErrorsService } from './errors.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,216 +17,216 @@ import { IProduct } from '../models/entities/Product.entity';
 export class ProductsService extends APIService {
   private readonly _productsState = new BehaviorSubject<IProductsState>({
     products: [
-      {
-        id: v4(),
-        data: {
-          title: 'Product 1',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 2',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 3',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 4',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 5',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 6',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 7',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 1',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 2',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 3',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 4',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 5',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 6',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 7',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 1',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 2',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 3',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 4',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 5',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 6',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
-      {
-        id: v4(),
-        data: {
-          title: 'Product 7',
-          category: 'Biscuits',
-          employee: 'John',
-          price: 22,
-          description: 'Limp biscuits',
-        },
-      },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 1',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 2',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 3',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 4',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 5',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 6',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 7',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 1',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 2',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 3',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 4',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 5',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 6',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 7',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 1',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 2',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 3',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 4',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 5',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 6',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
+      // {
+      //   id: v4(),
+      //   data: {
+      //     title: 'Product 7',
+      //     category: 'Biscuits',
+      //     employee: 'John',
+      //     price: 22,
+      //     description: 'Limp biscuits',
+      //   },
+      // },
     ],
     product: undefined,
     stats: [],
@@ -257,6 +258,20 @@ export class ProductsService extends APIService {
     return this._cloneState().APIRequests.filter(
       (APIRequestID) => APIRequestID !== newAPIRequestID
     );
+  }
+
+  setEditingProduct(productID: string): void {
+    this._updateState({
+      product: this._productsState
+        .getValue()
+        .products.filter((product) => product.id === productID)[0],
+    });
+  }
+
+  removeEditingProduct(): void {
+    this._updateState({
+      product: undefined,
+    });
   }
 
   getProducts(): void {
@@ -319,17 +334,46 @@ export class ProductsService extends APIService {
       });
   }
 
-  setEditingProduct(productID: string): void {
-    this._updateState({
-      product: this._productsState
-        .getValue()
-        .products.filter((product) => product.id === productID)[0],
-    });
-  }
+  createProduct(
+    employee: string,
+    title: string,
+    category: string,
+    price: number,
+    description?: string
+  ): void {
+    const newAPIRequestID: string = v4();
 
-  removeEditingProduct(): void {
     this._updateState({
-      product: undefined,
+      APIRequests: [...this._cloneState().APIRequests, newAPIRequestID],
     });
+
+    this._http
+      .post(this._productsAPI, {
+        employee,
+        title,
+        category,
+        price,
+        description: description ? description : '',
+      })
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          this._errorsService.createNewError(error.error);
+
+          this._updateState({
+            APIRequests: this._removeAPIRequestID(newAPIRequestID),
+          });
+
+          return throwError(
+            () => new Error('Something bad happened, please try again later.')
+          );
+        })
+      )
+      .subscribe((response) => {
+        console.log(response);
+
+        this._updateState({
+          APIRequests: this._removeAPIRequestID(newAPIRequestID),
+        });
+      });
   }
 }
