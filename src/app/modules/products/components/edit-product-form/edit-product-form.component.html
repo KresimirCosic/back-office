@@ -1,3 +1,65 @@
-<form id="edit-product-form" class="edit-product-form">
-  <!-- <h1></h1> -->
+<form
+  *ngIf="editProductForm"
+  id="edit-product-form"
+  class="edit-product-form"
+  [formGroup]="editProductForm"
+>
+  <div class="edit-product-form-field-container">
+    <mat-form-field class="form-field">
+      <mat-label>Title</mat-label>
+      <input type="text" matInput formControlName="title" />
+      <mat-error *ngIf="editProductForm.get('title')?.hasError('required')"
+        >Please enter the product title</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div class="edit-product-form-field-container">
+    <mat-form-field class="form-field">
+      <mat-label>Category</mat-label>
+      <input type="text" matInput formControlName="category" />
+      <mat-error *ngIf="editProductForm.get('category')?.hasError('required')"
+        >Please enter the product category</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div class="edit-product-form-field-container">
+    <mat-form-field class="form-field">
+      <mat-label>Price</mat-label>
+      <input type="number" matInput formControlName="price" />
+      <mat-error *ngIf="editProductForm.get('price')?.hasError('required')"
+        >Please enter the product price</mat-error
+      >
+      <mat-error *ngIf="editProductForm.get('price')?.hasError('min')"
+        >The price must be of positive value</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div class="edit-product-form-field-container">
+    <mat-form-field class="form-field">
+      <mat-label>Description (optional)</mat-label>
+      <textarea type="text" matInput formControlName="description"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="edit-product-form-field-container">
+    <mat-form-field class="form-field">
+      <mat-label>Created by</mat-label>
+      <input type="text" matInput formControlName="employee" />
+    </mat-form-field>
+  </div>
+
+  <div class="edit-product-form-field-container">
+    <button
+      mat-fab
+      color-accent
+      type="submit"
+      [disabled]="editProductForm.invalid"
+      class="edit-product-form-submit-button"
+    >
+      <span class="material-icons">edit</span>
+    </button>
+  </div>
 </form>

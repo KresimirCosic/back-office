@@ -1,0 +1,23 @@
+.edit-product-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 500px;
+  min-width: 250px;
+  width: 100%;
+  margin: 0 auto;
+  &-field-container {
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+    width: 100%;
+    padding: 1rem;
+    .form-field {
+      width: 100%;
+    }
+    &:last-child {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
