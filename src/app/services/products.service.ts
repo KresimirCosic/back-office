@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject, catchError, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
 import { cloneDeep } from 'lodash';
 import { v4 } from 'uuid';
 
@@ -49,6 +49,20 @@ export class ProductsService extends APIService {
     );
   }
 
+  private _handleError(newAPIRequestID: string) {
+    return (error: HttpErrorResponse) => {
+      this._errorsService.createNewError(error.error);
+
+      this._updateState({
+        APIRequests: this._removeAPIRequestID(newAPIRequestID),
+      });
+
+      return throwError(
+        () => new Error('Something bad happened, please try again later.')
+      );
+    };
+  }
+
   setEditingProduct(productID: string): void {
     this._updateState({
       product: this._productsState
@@ -72,19 +86,7 @@ export class ProductsService extends APIService {
 
     this._http
       .get<IProduct[]>(this._productsAPI)
-      .pipe(
-        catchError((error: HttpErrorResponse) => {
-          this._errorsService.createNewError(error.error);
-
-          this._updateState({
-            APIRequests: this._removeAPIRequestID(newAPIRequestID),
-          });
-
-          return throwError(
-            () => new Error('Something bad happened, please try again later.')
-          );
-        })
-      )
+      .pipe(catchError(this._handleError(newAPIRequestID)))
       .subscribe((products) => {
         this._updateState({
           products,
@@ -102,19 +104,7 @@ export class ProductsService extends APIService {
 
     this._http
       .get<IStatsCategories[]>(this._statsAPI)
-      .pipe(
-        catchError((error: HttpErrorResponse) => {
-          this._errorsService.createNewError(error.error);
-
-          this._updateState({
-            APIRequests: this._removeAPIRequestID(newAPIRequestID),
-          });
-
-          return throwError(
-            () => new Error('Something bad happened, please try again later.')
-          );
-        })
-      )
+      .pipe(catchError(this._handleError(newAPIRequestID)))
       .subscribe((stats) => {
         this._updateState({
           stats,
@@ -148,19 +138,7 @@ export class ProductsService extends APIService {
         },
         { responseType: 'text' }
       )
-      .pipe(
-        catchError((error: HttpErrorResponse) => {
-          this._errorsService.createNewError(error.error);
-
-          this._updateState({
-            APIRequests: this._removeAPIRequestID(newAPIRequestID),
-          });
-
-          return throwError(
-            () => new Error('Something bad happened, please try again later.')
-          );
-        })
-      )
+      .pipe(catchError(this._handleError(newAPIRequestID)))
       .subscribe((newProductID: string) => {
         this._updateState({
           products: [
@@ -175,6 +153,28 @@ export class ProductsService extends APIService {
                 description: description ? description : '',
               },
             },
+          ],
+          APIRequests: this._removeAPIRequestID(newAPIRequestID),
+        });
+      });
+  }
+
+  deleteProduct(productID: string): void {
+    const newAPIRequestID: string = v4();
+
+    this._updateState({
+      APIRequests: [...this._cloneState().APIRequests, newAPIRequestID],
+    });
+
+    this._http
+      .delete(`${this._productsAPI}/${productID}`)
+      .pipe(catchError(this._handleError(newAPIRequestID)))
+      .subscribe((response) => {
+        this._updateState({
+          products: [
+            ...this._cloneState().products.filter(
+              (product) => product.id !== productID
+            ),
           ],
           APIRequests: this._removeAPIRequestID(newAPIRequestID),
         });

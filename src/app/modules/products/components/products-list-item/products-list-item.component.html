@@ -30,7 +30,7 @@
       <button mat-fab color="primary" [routerLink]="['/products', product.id]">
         <span class="material-icons">edit</span>
       </button>
-      <button mat-fab color="warn">
+      <button mat-fab color="warn" (click)="onDeleteProduct(product.id)">
         <span class="material-icons">delete</span>
       </button>
     </div>
