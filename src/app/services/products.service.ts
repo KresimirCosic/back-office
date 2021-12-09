@@ -16,218 +16,7 @@ import { ErrorsService } from './errors.service';
 })
 export class ProductsService extends APIService {
   private readonly _productsState = new BehaviorSubject<IProductsState>({
-    products: [
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 1',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 2',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 3',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 4',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 5',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 6',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 7',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 1',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 2',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 3',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 4',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 5',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 6',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 7',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 1',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 2',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 3',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 4',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 5',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 6',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-      // {
-      //   id: v4(),
-      //   data: {
-      //     title: 'Product 7',
-      //     category: 'Biscuits',
-      //     employee: 'John',
-      //     price: 22,
-      //     description: 'Limp biscuits',
-      //   },
-      // },
-    ],
+    products: [],
     product: undefined,
     stats: [],
     APIRequests: [],
@@ -348,13 +137,17 @@ export class ProductsService extends APIService {
     });
 
     this._http
-      .post(this._productsAPI, {
-        employee,
-        title,
-        category,
-        price,
-        description: description ? description : '',
-      })
+      .post(
+        this._productsAPI,
+        {
+          employee,
+          title,
+          category,
+          price,
+          description: description ? description : '',
+        },
+        { responseType: 'text' }
+      )
       .pipe(
         catchError((error: HttpErrorResponse) => {
           this._errorsService.createNewError(error.error);
@@ -368,10 +161,21 @@ export class ProductsService extends APIService {
           );
         })
       )
-      .subscribe((response) => {
-        console.log(response);
-
+      .subscribe((newProductID: string) => {
         this._updateState({
+          products: [
+            ...this._cloneState().products,
+            {
+              id: newProductID,
+              data: {
+                employee,
+                title,
+                category,
+                price,
+                description: description ? description : '',
+              },
+            },
+          ],
           APIRequests: this._removeAPIRequestID(newAPIRequestID),
         });
       });
