@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this._productsService.getProducts();
+    this._productsService.getProducts();
     this._productsService.getCategories();
   }
 }
