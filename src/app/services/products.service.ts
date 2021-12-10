@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, throwError } from 'rxjs';
 import { cloneDeep } from 'lodash';
 import { v4 } from 'uuid';
 
@@ -157,6 +157,26 @@ export class ProductsService extends APIService {
           APIRequests: this._removeAPIRequestID(newAPIRequestID),
         });
       });
+  }
+
+  updateProduct(updatedProduct: IProduct): void {
+    const newAPIRequestID: string = v4();
+
+    this._updateState({
+      APIRequests: [...this._cloneState().APIRequests, newAPIRequestID],
+    });
+
+    setTimeout(() => {
+      this._updateState({
+        products: [
+          ...this._cloneState().products.map((product) => {
+            if (product.id !== updatedProduct.id) return product;
+            else return { ...product, ...updatedProduct };
+          }),
+        ],
+        APIRequests: this._removeAPIRequestID(newAPIRequestID),
+      });
+    }, this.fakeAPIRequestDuration);
   }
 
   deleteProduct(productID: string): void {

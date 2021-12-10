@@ -3,6 +3,7 @@
   id="edit-product-form"
   class="edit-product-form"
   [formGroup]="editProductForm"
+  (ngSubmit)="onUpdateProduct()"
 >
   <div class="edit-product-form-field-container">
     <mat-form-field class="form-field">
