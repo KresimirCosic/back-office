@@ -14,6 +14,7 @@ import { ProductsListItemsComponent } from './components/products-list-items/pro
 import { ProductsListItemComponent } from './components/products-list-item/products-list-item.component';
 import { ProductsListFilterFormComponent } from './components/products-list-filter-form/products-list-filter-form.component';
 import { EditProductFormComponent } from './components/edit-product-form/edit-product-form.component';
+import { ChartComponent } from './components/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { EditProductFormComponent } from './components/edit-product-form/edit-pr
     ProductsListItemComponent,
     ProductsListFilterFormComponent,
     EditProductFormComponent,
+    ChartComponent,
   ],
   imports: [SharedModule, ProductsRoutingModule],
 })

@@ -1,1 +1,3 @@
-<p>stats works!</p>
+<ng-container *ngIf="productsState$ | async as productsState">
+  <app-chart [statsCategories]="productsState.stats"></app-chart>
+</ng-container>
